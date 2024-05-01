@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-users
+      author: liquibase
+      preConditions:
+        - onFail:
+          not:
+            tableExists:
+              tableName: users
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: users_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: users_username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: users_email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: users_password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

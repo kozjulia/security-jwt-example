@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/01/changelog-users.yaml
+
+  - include:
+      file: db/changelog/01/changelog-roles.yaml
+
+  - include:
+      file: db/changelog/01/changelog-refresh-tokens.yaml

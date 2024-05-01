@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-roles
+      author: liquibase
+      preConditions:
+        - onFail:
+          not:
+            tableExists:
+              tableName: roles
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: roles
+                  type: varchar(255)
+              - column:
+                  name: users_id
+                  type: UUID
+                  constraints:
+                    foreignKeyName: fk_roles_to_users
+                    references: users(users_id)
+                    nullable: false

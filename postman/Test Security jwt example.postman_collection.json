@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "76939e08-d1e3-40e2-8746-879c4d06f1b4",
+		"name": "Test Security jwt example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31033954"
+	},
+	"item": [
+		{
+			"name": "Добавить USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"1\",\r\n    \"password\": \"1\",\r\n    \"email\": \"email@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Логирование USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"1\",\n    \"password\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение нового токена USER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbnRvbiIsImV4cCI6MTY1NTc5NDE2NCwicm9sZXMiOlsiVVNFUiJdLCJmaXJzdE5hbWUiOiLQkNC90YLQvtC9In0.hJ_j6BjysvP2Qv2Lt06m8FwE-U4AHRjVQ9BpBy6fJIycUDZxBSAhoeFucaOGFgukTMfICZbgEvna9OuwqYzzwQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzE0NTk0NTI3fQ.McFzV2z0W2PhkJCw6v51sw3ADFvkjFfYdvalBK009L4kYSHsBmv4a0WThMk5wbXS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Эндпойнт для USER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzE0NTkzOTQwLCJleHAiOjE3MTQ1OTQ1NDAsInJvbGVzIjpbIlVTRVIiXSwiaWQiOiI3ZGExM2UzNC1kNDdmLTQ2NjUtYTE0Zi00OWM5NjlkYzIxZTYifQ.gki7th6MaZxyP1s7WZeqlc4fxCFBYU7vuLlP-AgmkF4usPH4EfcRNzUMz1T-JD1f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Логирование ADMIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Эндпойнт для ADMIN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxNDU5Mzk2NiwiZXhwIjoxNzE0NTk0NTY2LCJyb2xlcyI6WyJBRE1JTiJdLCJpZCI6IjA5NjNhODU4LWNhYjUtNGVjNS05MjA2LTMwNzJiNTY4NTI5MCJ9.MVmQDGj8Jq0_6QF4Kjx-9PTpCIc9btXCY40DTpPP6j0gGe0fj5JdQS-qfHpcZ_xs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

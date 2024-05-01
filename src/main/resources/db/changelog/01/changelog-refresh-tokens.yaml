@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-refresh-tokens
+      author: liquibase
+      preConditions:
+        - onFail:
+          not:
+            tableExists:
+              tableName: refresh_tokens
+      changes:
+        - createTable:
+            tableName: refresh_tokens
+            columns:
+              - column:
+                  name: refresh_tokens_id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: refresh_tokens_user_id
+                  type: UUID
+                  constraints:
+                    foreignKeyName: fk_refresh_tokens_to_users
+                    references: users(users_id)
+                    nullable: false
+              - column:
+                  name: refresh_tokens_value
+                  type: varchar(255)
+              - column:
+                  name: refresh_tokens_expiry_date
+                  type: TIMESTAMP WITHOUT TIME ZONE

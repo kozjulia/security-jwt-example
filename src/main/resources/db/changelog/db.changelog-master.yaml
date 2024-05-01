@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: liquibase
+      changes:
+        - tagDatabase:
+            tag: v.1.0
+  - include:
+      file: db/changelog/01/changelog.yaml

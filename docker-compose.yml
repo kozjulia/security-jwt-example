@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  jwt-service:
+    build: .
+    image: jwt-service
+    container_name: jwt-service-container
+    ports:
+      - 8080:8080
+    depends_on:
+      - jwt-service-db
+    restart: on-failure
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://jwt-service-db:5432/security-jwt
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+
+  jwt-service-db:
+    image: postgres:16-alpine
+    container_name: jwt-service-db-container
+    volumes:
+      - /var/lib/postgresql/data/
+    ports:
+      - 6541:5432
+    environment:
+      - POSTGRES_DB=security-jwt
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
